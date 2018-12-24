@@ -45,8 +45,6 @@ struct compat_keyframe
     uint64_t asic_time;
     uint64_t utc;
     uint64_t last_sync;
-    uint64_t skew_num;
-    uint64_t skew_denom;
     uint64_t timestamp;
     uint64_t drop_count;
     uint16_t device_id;
@@ -130,9 +128,6 @@ record_time_t record_process::process_exa_keyframe(const read_record_t& record, 
 record_time_t record_process::process_compat_keyframe(const read_record_t& record, const char* keyframe, size_t len)
 {
     const compat_keyframe* kf = reinterpret_cast<const compat_keyframe*>(keyframe);
-    if (ntohll(kf->skew_num) != 1 || ntohll(kf->skew_denom) != 1)
-        return record_time_t(record_time_t::unsupported_keyframe);
-
     keyframe_data data;
     data.utc_nanos = ntohll(kf->utc);
     data.clock_time = record.clock_time;
