@@ -198,9 +198,7 @@ record_time_t record_process::process_32bit_timestamps(const read_record_t& reco
         ptr += sizeof(ip_header_t);
 
         if (ip->ip_p == compat_keyframe::ckf_proto
-            && ip->ip_ttl == IPDEFTTL
-            && ip->ip_dst.s_addr == compat_keyframe::ckf_dest
-            && ip->ip_src.s_addr == compat_keyframe::ckf_src )
+            && ip->ip_ttl == IPDEFTTL )
         {
             uint32_t len = ip_len - sizeof(ip_header_t);
             if (len == sizeof(exa_keyframe))
