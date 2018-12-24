@@ -99,7 +99,10 @@ record_process::record_process(const process_options& opt)
 , keyframe_()
 , time_offset_end_(opt.time_offset_end)
 , timestamp_format_(opt.timestamp_format)
-{}
+{
+   time_offset_end_ = 4;
+}
+
 
 record_time_t record_process::process_keyframe(const keyframe_data& data)
 {
