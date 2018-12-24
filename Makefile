@@ -1,5 +1,5 @@
 CXX	      := g++
-CXXFLAGS  := -p -g -std=c++11  -Weffc++
+CXXFLAGS  := -p -g -std=c++14  -Weffc++
 OBJDIR	  := build
 LDFLAGS   := -fPIC
 
